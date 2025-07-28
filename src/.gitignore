@@ -1,5 +1,6 @@
 # Maven
-target/
+target/**
+.idea/**
 !.mvn/wrapper/maven-wrapper.jar
 **/logs/
 *.log

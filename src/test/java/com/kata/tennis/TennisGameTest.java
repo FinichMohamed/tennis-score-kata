@@ -12,5 +12,13 @@ public class TennisGameTest {
         assertEquals("Player A : 0 / Player B : 0", game.getScore());
     }
 
+    @Test
+    void playerAScoresFirst() {
+        TennisGame game = new TennisGame();
+        game.pointWonBy('A');
+        assertEquals("Player A : 15 / Player B : 0", game.getScore());
+    }
+
+
 }
 
