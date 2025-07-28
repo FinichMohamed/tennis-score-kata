@@ -15,44 +15,35 @@ public class TennisGameTest {
     @Test
     void playerAScoresFirst() {
         TennisGame game = new TennisGame();
-        game.pointWonBy('A');
+        game.play("A");
         assertEquals("Player A : 15 / Player B : 0", game.getScore());
     }
 
     @Test
     void playerBScoresFirst() {
         TennisGame game = new TennisGame();
-        game.pointWonBy('B');
+        game.play("B");
         assertEquals("Player A : 0 / Player B : 15", game.getScore());
     }
 
     @Test
     void playerAScoresThreePoints() {
         TennisGame game = new TennisGame();
-        game.pointWonBy('A');
-        game.pointWonBy('A');
-        game.pointWonBy('A');
+        game.play("AAA");
         assertEquals("Player A : 40 / Player B : 0", game.getScore());
     }
 
     @Test
     void testDeuce() {
         TennisGame game = new TennisGame();
-        for (int i = 0; i < 3; i++) {
-            game.pointWonBy('A');
-            game.pointWonBy('B');
-        }
+        game.play("ABABAB");
         assertEquals("Deuce", game.getScore());
     }
 
     @Test
     void testAdvantageAfterDeuce() {
         TennisGame game = new TennisGame();
-        for (int i = 0; i < 3; i++) {
-            game.pointWonBy('A');
-            game.pointWonBy('B');
-        }
-        game.pointWonBy('A');
+        game.play("ABABABA");
         assertEquals("Advantage Player A", game.getScore());
     }
 
@@ -60,12 +51,7 @@ public class TennisGameTest {
     @Test
     void testPlayerAWinsAfterAdvantage() {
         TennisGame game = new TennisGame();
-        for (int i = 0; i < 3; i++) {
-            game.pointWonBy('A');
-            game.pointWonBy('B');
-        }
-        game.pointWonBy('A');
-        game.pointWonBy('A');
+        game.play("ABABAAAA");
         assertEquals("Player A wins the game", game.getScore());
     }
 
@@ -73,12 +59,7 @@ public class TennisGameTest {
     @Test
     void testPlayerAWinsDirectly() {
         TennisGame game = new TennisGame();
-
-        game.pointWonBy('A');
-        game.pointWonBy('A');
-        game.pointWonBy('A');
-        game.pointWonBy('A');
-
+        game.play("AAAA");
         assertEquals("Player A wins the game", game.getScore());
     }
 
@@ -86,33 +67,25 @@ public class TennisGameTest {
     @Test
     void testPlayerBWinsDirectly() {
         TennisGame game = new TennisGame();
-
-        game.pointWonBy('B');
-        game.pointWonBy('B');
-        game.pointWonBy('B');
-        game.pointWonBy('B');
-
+        game.play("BBBB");
         assertEquals("Player B wins the game", game.getScore());
     }
+
 
     @Test
     void testReturnToDeuceAfterLosingAdvantage() {
         TennisGame game = new TennisGame();
-
-        for (int i = 0; i < 3; i++) {
-            game.pointWonBy('A');
-            game.pointWonBy('B');
-        }
-
-        game.pointWonBy('A'); // Advantage A
-        assertEquals("Advantage Player A", game.getScore());
-
-        game.pointWonBy('B'); // Back to Deuce
+        game.play("ABABABAB"); // Deuce -> Advantage A -> B gagne -> retour à Deuce
         assertEquals("Deuce", game.getScore());
     }
 
 
-
+    @Test
+    void testBackToDeuceFromAdvantage() {
+        TennisGame game = new TennisGame();
+        game.play("AAABBBAB");
+        assertEquals("Deuce", game.getScore());
+    }
 
 }
 
