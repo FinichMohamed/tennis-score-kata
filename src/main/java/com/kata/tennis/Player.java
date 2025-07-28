@@ -30,4 +30,17 @@ public class Player {
             default -> Score.FORTY;
         };
     }
+
+    public boolean isAtForty() {
+        return this.score == Score.FORTY;
+    }
+
+    public String getDisplayScore() {
+        return score.getDisplayValue();
+    }
+
+    public boolean hasWonAgainst(Player opponent) {
+        return this.score == Score.FORTY && opponent.getScore().ordinal() < Score.THIRTY.ordinal();
+    }
+
 }

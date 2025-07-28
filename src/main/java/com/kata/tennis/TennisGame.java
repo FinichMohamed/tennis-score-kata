@@ -18,8 +18,8 @@ public class TennisGame {
             return "Deuce";
         }
 
-        return playerA.getName() + " : " + playerA.getScore().getDisplayValue()
-                + " / " + playerB.getName() + " : " + playerB.getScore().getDisplayValue();
+        return playerA.getName() + " : " + playerA.getDisplayScore()
+                + " / " + playerB.getName() + " : " + playerB.getDisplayScore();
     }
 
 
@@ -34,12 +34,12 @@ public class TennisGame {
 
         if (winner != null) return;
 
-        if (isDeuce()) {
+        if (isDeuce()  || advantagePlayer != null ) {
             handleDeuceScenario(scorer);
             return;
         }
 
-        if (scorer.getScore() == Score.FORTY && opponent.getScore().ordinal() < Score.THIRTY.ordinal()) {
+        if (scorer.hasWonAgainst(opponent)) {
             winner = scorer;
             return;
         }
