@@ -35,6 +35,16 @@ public class TennisGameTest {
         assertEquals("Player A : 40 / Player B : 0", game.getScore());
     }
 
+    @Test
+    void testDeuce() {
+        TennisGame game = new TennisGame();
+        for (int i = 0; i < 3; i++) {
+            game.pointWonBy('A');
+            game.pointWonBy('B');
+        }
+        assertEquals("Deuce", game.getScore());
+    }
+
 
 
 }

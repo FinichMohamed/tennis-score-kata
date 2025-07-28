@@ -6,9 +6,13 @@ public class TennisGame {
 
 
     public String getScore() {
+        if (playerA.getScore() == Score.FORTY && playerB.getScore() == Score.FORTY) {
+            return "Deuce";
+        }
         return playerA.getName() + " : " + playerA.getScore().getDisplayValue() + " / "
                 + playerB.getName() + " : " + playerB.getScore().getDisplayValue();
     }
+
 
     public void pointWonBy(char player) {
         if (player == 'A') {
