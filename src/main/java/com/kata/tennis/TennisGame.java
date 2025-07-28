@@ -40,12 +40,15 @@ public class TennisGame {
             return;
         }
 
-        scorer.incrementScore();
-
         if (scorer.getScore() == Score.FORTY &&
                 opponent.getScore().ordinal() < Score.THIRTY.ordinal()) {
             winner = scorer;
+            return;
         }
+
+        scorer.incrementScore();
+
+
     }
 
 
