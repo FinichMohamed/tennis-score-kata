@@ -57,6 +57,17 @@ public class TennisGameTest {
     }
 
 
+    @Test
+    void testPlayerAWinsAfterAdvantage() {
+        TennisGame game = new TennisGame();
+        for (int i = 0; i < 3; i++) {
+            game.pointWonBy('A');
+            game.pointWonBy('B');
+        }
+        game.pointWonBy('A');
+        game.pointWonBy('A');
+        assertEquals("Player A wins the game", game.getScore());
+    }
 
 
 }

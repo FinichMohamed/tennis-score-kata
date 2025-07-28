@@ -26,6 +26,9 @@ public class TennisGame {
 
     public void pointWonBy(char playerChar) {
         Player scorer = (playerChar == 'A') ? playerA : playerB;
+        Player opponent = (playerChar == 'A') ? playerB : playerA;
+
+        if (winner != null) return;
         if (playerA.getScore() == Score.FORTY && playerB.getScore() == Score.FORTY) {
             if (advantagePlayer == null) {
                 advantagePlayer = scorer;
@@ -38,6 +41,11 @@ public class TennisGame {
         }
 
         scorer.incrementScore();
+
+        if (scorer.getScore() == Score.FORTY &&
+                opponent.getScore().ordinal() < Score.THIRTY.ordinal()) {
+            winner = scorer;
+        }
     }
 
 
