@@ -82,5 +82,18 @@ public class TennisGameTest {
         assertEquals("Player A wins the game", game.getScore());
     }
 
+
+    @Test
+    void testPlayerBWinsDirectly() {
+        TennisGame game = new TennisGame();
+
+        game.pointWonBy('B');
+        game.pointWonBy('B');
+        game.pointWonBy('B');
+        game.pointWonBy('B');
+
+        assertEquals("Player B wins the game", game.getScore());
+    }
+
 }
 
