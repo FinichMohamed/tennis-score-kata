@@ -1,30 +1,32 @@
 package com.kata.tennis;
 
 public class TennisGame {
-    private int scoreA = 0;
-    private int scoreB = 0;
+    private Score scoreA = Score.LOVE;
+    private Score scoreB = Score.LOVE;
+
 
 
     public String getScore() {
-        return "Player A : " + format(scoreA) + " / Player B : " + format(scoreB);
+        return "Player A : " + scoreA.getDisplayValue() + " / Player B : " + scoreB.getDisplayValue();
     }
     public void pointWonBy(char player) {
         if (player == 'A') {
-            scoreA++;
+            scoreA = nextScore(scoreA);
         } else if (player == 'B') {
-            scoreB++;
+            scoreB = nextScore(scoreB);
         }
     }
 
-    private String format(int score) {
-        return switch (score) {
-            case 0 -> "0";
-            case 1 -> "15";
-            case 2 -> "30";
-            case 3 -> "40";
-            default -> "40";
+    private Score nextScore(Score current) {
+        return switch (current) {
+            case LOVE -> Score.FIFTEEN;
+            case FIFTEEN -> Score.THIRTY;
+            case THIRTY -> Score.FORTY;
+            default -> Score.FORTY;
         };
     }
+
+
 
 
 }
