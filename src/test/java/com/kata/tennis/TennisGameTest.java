@@ -99,7 +99,7 @@ public class TennisGameTest {
     void testReturnToDeuceAfterLosingAdvantage() {
         TennisGame game = new TennisGame();
 
-         for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             game.pointWonBy('A');
             game.pointWonBy('B');
         }

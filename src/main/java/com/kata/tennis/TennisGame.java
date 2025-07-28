@@ -57,6 +57,18 @@ public class TennisGame {
         }
     }
 
+    public static void main(String[] args) {
+        TennisGame game = new TennisGame();
+        String sequence = "ABABAA";
+
+        for (char c : sequence.toCharArray()) {
+            game.pointWonBy(c);
+            String score = game.getScore();
+            System.out.println(score);
+        }
+    }
+
+
 
 
 

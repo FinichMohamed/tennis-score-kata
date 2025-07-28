@@ -40,7 +40,8 @@ public class Player {
     }
 
     public boolean hasWonAgainst(Player opponent) {
-        return this.score == Score.FORTY && opponent.getScore().ordinal() < Score.THIRTY.ordinal();
+        return this.score == Score.FORTY && opponent.getScore() != Score.FORTY;
     }
+
 
 }
